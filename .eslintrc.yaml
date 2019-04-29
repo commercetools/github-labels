@@ -1,0 +1,16 @@
+extends:
+  - airbnb-base
+  - prettier
+  - plugin:jest/recommended
+
+env:
+  node: true
+
+plugins:
+  - prettier
+  - jest
+
+rules:
+  no-use-before-define:
+    - error
+    - functions: false

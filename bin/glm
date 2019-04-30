@@ -22,10 +22,17 @@ function printHelp() {
   `);
 }
 
-function printMessage(message) {
+function printMessage(summary) {
   console.log(`
   GITHUB LABEL MANAGER...
-    ${message}
+    ${summary.message}
+    ${
+      summary.stats
+        ? `${summary.stats.created} created
+    ${summary.stats.deleted} deleted
+    ${summary.stats.updated} updated`
+        : ''
+    }
   `);
 }
 
@@ -33,25 +40,15 @@ function printMessage(message) {
   try {
     if (command === 'sync') {
       const summary = await labelControl();
-      if (typeof summary === 'string') {
-        printMessage(summary);
-      }
-      setTimeout(await writeLabelsConfig, 1000);
-      if (typeof summary === 'object') {
-        printMessage(`Labels synchronized!
-      ${summary.created} created
-      ${summary.deleted} deleted
-      ${summary.updated} updated
-        `);
-      }
+      printMessage(summary);
     } else if (command === 'init') {
       await writeLabelsConfig();
-      printMessage('Labels successfully stored!');
+      printMessage({ message: 'Labels successfully stored!' });
     } else {
       printHelp();
     }
   } catch (err) {
-    console.error(err);
+    console.error((err.response && err.response.data) || err);
     printHelp();
     process.exit(1);
   }

@@ -32,20 +32,21 @@ function printMessage(summary) {
     ${summary.stats.deleted} deleted
     ${summary.stats.updated} updated`
         : ''
-    }
-  `);
+    }`);
 }
 
 (async () => {
   try {
-    if (command === 'sync') {
-      const summary = await labelControl();
-      printMessage(summary);
-    } else if (command === 'init') {
-      await writeLabelsConfig();
-      printMessage({ message: 'Labels successfully stored!' });
-    } else {
-      printHelp();
+    switch (command) {
+      case 'sync':
+        printMessage(await labelControl());
+        break;
+      case 'init':
+        await writeLabelsConfig();
+        printMessage({ message: 'Labels successfully stored!' });
+        break;
+      default:
+        printHelp();
     }
   } catch (err) {
     console.error((err.response && err.response.data) || err);

@@ -1,10 +1,28 @@
 {
-  "name": "github-label-manager",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "name": "@commercetools/github-labels",
   "version": "1.0.0",
   "description": "Manage Labels of a Repository",
-  "main": "index.js",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "commercetools",
+    "labels",
+    "github",
+    "manager"
+  ],
+  "homepage": "https://github.com/commercetools/github-labels",
+  "bugs": "https://github.com/commercetools/github-labels/issues",
+  "author": "Timon Rey Turak <timon.turak@commercetools.com> (https://github.com/timonrey)",
   "bin": {
     "glm": "./bin/glm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/github-labels.git"
   },
   "scripts": {
     "test:watch": "npm test -- --watch",
@@ -24,7 +42,6 @@
   "dependencies": {
     "@commercetools/http-user-agent": "^2.0.0",
     "@octokit/rest": "^16.25.0",
-    "cosmiconfig": "^5.2.0",
     "dotenv": "^7.0.0",
     "file-system": "^2.2.2",
     "mri": "^1.1.4"

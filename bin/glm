@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const mri = require('mri');
+const path = require('path');
 const { labelControl, writeLabelsConfig } = require('../lib/index');
 
 const flags = mri(process.argv.slice(2));
@@ -36,18 +37,22 @@ function printMessage(summary) {
     }`);
 }
 
+function throwIfConfigFileIsMissing() {
+  try {
+    fs.accessSync(path.join(process.cwd(), 'label-config.json'), fs.F_OK);
+  } catch (err) {
+    throw new Error(
+      `The config file "label-config.json" is missing. Run "glm init" to create the config file.`
+    );
+  }
+}
+
 (async () => {
   try {
     switch (command) {
       case 'sync':
-        if (!fs.existsSync('./label-config.json')) {
-          printMessage({
-            message: `label-config.json not found.
-    Run ./bin/glm init to create the config file.`,
-          });
-        } else {
-          printMessage(await labelControl());
-        }
+        throwIfConfigFileIsMissing();
+        printMessage(await labelControl());
         break;
       case 'init':
         await writeLabelsConfig();

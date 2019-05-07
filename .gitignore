@@ -79,8 +79,5 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# Label Config
-label-config.json
-
 # DS_Store
 .DS_Store

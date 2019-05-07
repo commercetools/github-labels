@@ -1,0 +1,35 @@
+version: 2.1
+
+jobs:
+  lint_and_test:
+    working_directory: ~/github-labels
+    docker:
+      - image: circleci/node:8
+    environment:
+      OWNER: timonrey
+      REPOSITORY: pingpongapp
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Installing dependencies
+          command: npm install
+      - save_cache:
+          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Linting JavaScript
+          command: npm run lint
+      - run:
+          name: Testing JavaScript
+          command: npm test
+      - run:
+          name: Synchronizing labels
+          command: ./bin/glm sync
+
+workflows:
+  lint_and_test:
+    jobs:
+      - lint_and_test

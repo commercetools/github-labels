@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1349570538,
+    "name": "bad first issue",
+    "color": "7067ff",
+    "description": ""
+  },
+  {
+    "id": 1336640188,
+    "name": "bug",
+    "color": "8aeac7",
+    "description": ""
+  },
+  {
+    "id": 1349571999,
+    "name": "bug2",
+    "color": "8aeac7",
+    "description": ""
+  },
+  {
+    "id": 1342160657,
+    "name": "foo bar1",
+    "color": "ededed",
+    "description": "foo"
+  },
+  {
+    "id": 1349571998,
+    "name": "foo bar2",
+    "color": "ededed",
+    "description": "bar"
+  },
+  {
+    "id": 1349571997,
+    "name": "foo bar3",
+    "color": "ededed",
+    "description": "foo"
+  }
+]

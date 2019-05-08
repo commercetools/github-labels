@@ -129,16 +129,12 @@ describe('Config file', () => {
     });
     it('should create a new label', async () => {
       fs.readFileSync.mockReturnValue(JSON.stringify(mockedCreatedLabels));
-      await labelControl();
+      const summary = await labelControl();
+      expect(summary.stats.created).toBe(1);
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         expect.any(String),
         JSON.stringify(mockedCreatedLabels, null, 2)
       );
-    });
-    it('should log it in summary', async () => {
-      fs.readFileSync.mockReturnValue(JSON.stringify(mockedCreatedLabels));
-      const summary = await labelControl();
-      expect(summary.stats.created).toBe(1);
     });
   });
   describe('when deleting a label', () => {
@@ -151,16 +147,12 @@ describe('Config file', () => {
     });
     it('should delete a label', async () => {
       fs.readFileSync.mockReturnValue(JSON.stringify(mockedDeletedLabels));
-      await labelControl();
+      const summary = await labelControl();
+      expect(summary.stats.deleted).toBe(1);
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         expect.any(String),
         JSON.stringify(mockedDeletedLabels, null, 2)
       );
-    });
-    it('should log it in summary', async () => {
-      fs.readFileSync.mockReturnValue(JSON.stringify(mockedDeletedLabels));
-      const summary = await labelControl();
-      expect(summary.stats.deleted).toBe(1);
     });
   });
   describe('when updating a label', () => {
@@ -173,16 +165,12 @@ describe('Config file', () => {
     });
     it('should update a label', async () => {
       fs.readFileSync.mockReturnValue(JSON.stringify(mockedUpdatedLabels));
-      await labelControl();
+      const summary = await labelControl();
+      expect(summary.stats.updated).toBe(1);
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         expect.any(String),
         JSON.stringify(mockedUpdatedLabels, null, 2)
       );
-    });
-    it('should log it in summary', async () => {
-      fs.readFileSync.mockReturnValue(JSON.stringify(mockedUpdatedLabels));
-      const summary = await labelControl();
-      expect(summary.stats.updated).toBe(1);
     });
   });
   describe('when creating and deleting labels', () => {
@@ -198,22 +186,16 @@ describe('Config file', () => {
       fs.readFileSync.mockReturnValue(
         JSON.stringify(mockedCreatedAndDeletedLabels)
       );
-      await labelControl();
-      expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.any(String),
-        JSON.stringify(mockedCreatedAndDeletedLabels, null, 2)
-      );
-    });
-    it('should log it in summary', async () => {
-      fs.readFileSync.mockReturnValue(
-        JSON.stringify(mockedCreatedAndDeletedLabels)
-      );
       const summary = await labelControl();
-      expect(summary.stats).toStrictEqual({
+      expect(summary.stats).toEqual({
         created: 1,
         deleted: 1,
         updated: 0,
       });
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        expect.any(String),
+        JSON.stringify(mockedCreatedAndDeletedLabels, null, 2)
+      );
     });
   });
   describe('when creating and updating labels', () => {
@@ -229,22 +211,16 @@ describe('Config file', () => {
       fs.readFileSync.mockReturnValue(
         JSON.stringify(mockedCreatedAndUpdatedLabels)
       );
-      await labelControl();
-      expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.any(String),
-        JSON.stringify(mockedCreatedAndUpdatedLabels, null, 2)
-      );
-    });
-    it('should log it in summary', async () => {
-      fs.readFileSync.mockReturnValue(
-        JSON.stringify(mockedCreatedAndUpdatedLabels)
-      );
       const summary = await labelControl();
-      expect(summary.stats).toStrictEqual({
+      expect(summary.stats).toEqual({
         created: 1,
         deleted: 0,
         updated: 1,
       });
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        expect.any(String),
+        JSON.stringify(mockedCreatedAndUpdatedLabels, null, 2)
+      );
     });
   });
   describe('when deleting and updating labels', () => {
@@ -260,22 +236,16 @@ describe('Config file', () => {
       fs.readFileSync.mockReturnValue(
         JSON.stringify(mockedDeletedAndUpdatedLabels)
       );
-      await labelControl();
-      expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.any(String),
-        JSON.stringify(mockedDeletedAndUpdatedLabels, null, 2)
-      );
-    });
-    it('should log it in summary', async () => {
-      fs.readFileSync.mockReturnValue(
-        JSON.stringify(mockedDeletedAndUpdatedLabels)
-      );
       const summary = await labelControl();
-      expect(summary.stats).toStrictEqual({
+      expect(summary.stats).toEqual({
         created: 0,
         deleted: 1,
         updated: 1,
       });
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        expect.any(String),
+        JSON.stringify(mockedDeletedAndUpdatedLabels, null, 2)
+      );
     });
   });
   describe('when creating, deleting and updating labels', () => {
@@ -292,22 +262,16 @@ describe('Config file', () => {
       fs.readFileSync.mockReturnValue(
         JSON.stringify(mockedCreateDeleteAndUpdateLabels)
       );
-      await labelControl();
-      expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.any(String),
-        JSON.stringify(mockedCreateDeleteAndUpdateLabels, null, 2)
-      );
-    });
-    it('should log it in summary', async () => {
-      fs.readFileSync.mockReturnValue(
-        JSON.stringify(mockedCreateDeleteAndUpdateLabels)
-      );
       const summary = await labelControl();
-      expect(summary.stats).toStrictEqual({
+      expect(summary.stats).toEqual({
         created: 1,
         deleted: 1,
         updated: 1,
       });
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        expect.any(String),
+        JSON.stringify(mockedCreateDeleteAndUpdateLabels, null, 2)
+      );
     });
   });
   describe('if no modification is provided', () => {

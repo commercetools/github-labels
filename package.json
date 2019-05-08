@@ -45,6 +45,7 @@
   "dependencies": {
     "@commercetools/http-user-agent": "^2.0.0",
     "@octokit/rest": "^16.25.0",
+    "cosmiconfig": "^5.2.0",
     "dotenv": "^7.0.0",
     "file-system": "^2.2.2",
     "mri": "^1.1.4"

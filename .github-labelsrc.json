@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1340359275,
+    "name": "bug",
+    "color": "d73a4a",
+    "description": "Something isn't working"
+  },
+  {
+    "id": 1352666076,
+    "name": "config",
+    "color": "d3c1ff",
+    "description": ""
+  },
+  {
+    "id": 1340359276,
+    "name": "duplicate",
+    "color": "cfd3d7",
+    "description": "This issue or pull request already exists"
+  },
+  {
+    "id": 1340359277,
+    "name": "enhancement",
+    "color": "a2eeef",
+    "description": "New feature or request"
+  },
+  {
+    "id": 1340359279,
+    "name": "good first issue",
+    "color": "7057ff",
+    "description": "Good for newcomers"
+  },
+  {
+    "id": 1340359278,
+    "name": "help wanted",
+    "color": "008672",
+    "description": "Extra attention is needed"
+  },
+  {
+    "id": 1340359280,
+    "name": "invalid",
+    "color": "e4e669",
+    "description": "This doesn't seem right"
+  },
+  {
+    "id": 1340359281,
+    "name": "question",
+    "color": "d876e3",
+    "description": "Further information is requested"
+  },
+  {
+    "id": 1352666296,
+    "name": "tests",
+    "color": "103e89",
+    "description": ""
+  },
+  {
+    "id": 1340359282,
+    "name": "wontfix",
+    "color": "ffffff",
+    "description": "This will not be worked on"
+  }
+]

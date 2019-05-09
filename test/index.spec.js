@@ -3,6 +3,12 @@ const nock = require('nock');
 const { labelControl, writeLabelsConfig } = require('../lib');
 
 jest.mock('fs');
+jest.mock('cosmiconfig', () => () => ({
+  searchSync: jest.fn(() => null),
+}));
+jest.mock('shelljs', () => ({
+  exec: jest.fn(() => ({ stdout: 'git@github.com:owner/repository.git\n' })),
+}));
 
 const labels = {
   bug: {

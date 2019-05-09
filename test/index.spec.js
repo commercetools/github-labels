@@ -1,4 +1,5 @@
 const fs = require('fs');
+const shell = require('shelljs');
 const nock = require('nock');
 const { labelControl, writeLabelsConfig } = require('../lib');
 
@@ -112,6 +113,9 @@ const createMockForUpdateLabels = (
 describe('Config file', () => {
   beforeEach(() => {
     nock.cleanAll();
+    shell.exec.mockReturnValue({
+      stdout: 'git@github.com:commercetools/github-labels.git',
+    });
   });
   describe('when writing labels into config', () => {
     beforeEach(() => {

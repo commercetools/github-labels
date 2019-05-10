@@ -26,6 +26,7 @@
     "lib",
     "pictures",
     "LICENSE",
+    "CHANGELOG.md",
     "readme.md"
   ],
   "repository": {
@@ -33,6 +34,9 @@
     "url": "https://github.com/commercetools/github-labels.git"
   },
   "scripts": {
+    "format:js": "prettier --write '**/*.js'",
+    "format:md": "prettier --write --parser markdown '**/*.md'",
+    "format:yaml": "prettier --write --parser yaml '**/*.{yaml,yml}'",
     "test": "jest --config jest.test.config.js",
     "test:watch": "npm test -- --watch",
     "lint": "eslint bin/* lib/"

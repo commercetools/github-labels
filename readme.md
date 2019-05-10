@@ -5,6 +5,7 @@
 </div>
 
 ## Scope
+
 A cli for managing GitHub labels.
 
 ## Getting Started
@@ -12,13 +13,14 @@ A cli for managing GitHub labels.
 1. Install the Label Manager
 
 with npm:
+
 ```
 npm install @commercetools/github-labels --save-dev
 ```
 
 2. Define the authentication token
 
-  Generate a new GitHub [AUTH_TOKEN](https://github.com/settings/tokens) and write it into your **.env** file. The token should only need the `public_repo` scope (for public repositories) or `repo` (for private repositories).
+Generate a new GitHub [AUTH_TOKEN](https://github.com/settings/tokens) and write it into your **.env** file. The token should only need the `public_repo` scope (for public repositories) or `repo` (for private repositories).
 
 ```
 AUTH_TOKEN="your-token"
@@ -26,13 +28,16 @@ AUTH_TOKEN="your-token"
 
 3. Initialize the labels config
 
-  If you don't have a labels config file yet, you can initialize one by running:
+If you don't have a labels config file yet, you can initialize one by running:
+
 ```
 github-labels init
 ```
 
 ## Manage your labels
+
 GitHub labels are managed through the labels config file. The config must be in JSON format and can be defined in the following files:
+
 - `package.json`, under the name `github-labels`
 - `.github-labelsrc`
 - `.github-labelsrc.json`
@@ -49,6 +54,7 @@ This will synchronize the config file with your GitHub repository.
 If you want to see your changes, just go to your label settings on GitHub to see your current labels.
 
 ### Config structure:
+
 ```json
 {
   "id": 1336719046,
@@ -59,13 +65,13 @@ If you want to see your changes, just go to your label settings on GitHub to see
 ```
 
 ### Required fields:
-| Data | Required | Type |
-|:-------- |:-------:| :-------|
-| id | no | Id (Created by GitHub) |
-| name | yes | String (Native emojis can be added) |
-| color | no | String (hexadecimal color code without the leading #) |
-| description | no | String |
 
+| Data        | Required | Type                                                  |
+| :---------- | :------: | :---------------------------------------------------- |
+| id          |    no    | Id (Created by GitHub)                                |
+| name        |   yes    | String (Native emojis can be added)                   |
+| color       |    no    | String (hexadecimal color code without the leading #) |
+| description |    no    | String                                                |
 
 ### Reuse the same config across different repositories
 

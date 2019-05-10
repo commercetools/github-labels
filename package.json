@@ -18,6 +18,7 @@
   "bugs": "https://github.com/commercetools/github-labels/issues",
   "author": "Timon Rey Turak <timon.turak@commercetools.com> (https://github.com/timonrey)",
   "bin": {
+    "github-labels": "./bin/glm",
     "glm": "./bin/glm"
   },
   "repository": {

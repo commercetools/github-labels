@@ -36,17 +36,20 @@ GitHub labels are managed through the labels config file. The config must be in 
 - `package.json`, under the name `github-labels`
 - `.github-labelsrc`
 - `.github-labelsrc.json`
-If you don't have this file yet, follow the given instructions at [3. Create label config](#getting-started).
+
+If you don't have this file yet, follow the given instructions above.
 In this file, you can see all your current label data. If you want to change something on your labels,
 just modify the file as you like. After modifying, save your changes and run the command below:
+
 ```
 github-labels sync
 ```
+
 This will synchronize the config file with your GitHub repository.
 If you want to see your changes, just go to your label settings on GitHub to see your current labels.
 
 ### Config structure:
-```
+```json
 {
   "id": 1336719046,
   "name": "bug",

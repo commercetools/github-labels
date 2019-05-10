@@ -13,30 +13,34 @@ A cli for managing GitHub labels.
 
 with npm:
 ```
-npm install github-labels --save-dev
+npm install @commercetools/github-labels --save-dev
 ```
 
-2. Define environment variable
+2. Define the authentication token
 
-  Generate a new GitHub [AUTH_TOKEN](https://github.com/settings/tokens) and write it into your **.env** file:
+  Generate a new GitHub [AUTH_TOKEN](https://github.com/settings/tokens) and write it into your **.env** file. The token should only need the `public_repo` scope (for public repositories) or `repo` (for private repositories).
+
 ```
 AUTH_TOKEN="your-token"
 ```
 
-3. Create label config
+3. Initialize the labels config
 
-  Execute this command to create a `.github-labelsrc.json` file with the current labels of your repository:
+  If you don't have a labels config file yet, you can initialize one by running:
 ```
-glm init
+github-labels init
 ```
 
 ## Manage your labels
-If you want to change your label config, just go to the `.github-labelsrc.json` file in your repository.
+GitHub labels are managed through the labels config file. The config must be in JSON format and can be defined in the following files:
+- `package.json`, under the name `github-labels`
+- `.github-labelsrc`
+- `.github-labelsrc.json`
 If you don't have this file yet, follow the given instructions at [3. Create label config](#getting-started).
 In this file, you can see all your current label data. If you want to change something on your labels,
 just modify the file as you like. After modifying, save your changes and run the command below:
 ```
-glm sync
+github-labels sync
 ```
 This will synchronize the config file with your GitHub repository.
 If you want to see your changes, just go to your label settings on GitHub to see your current labels.
@@ -60,16 +64,12 @@ If you want to see your changes, just go to your label settings on GitHub to see
 | description | no | String |
 
 
-### Duplicate labels of an existing repository
+### Reuse the same config across different repositories
 
-1. Install label-manager on the repository with the labels you want to duplicate
-2. Initialize the label-manager to get the `.github-labelsrc.json` file with your current labels:
+If you have installed `github-labels` in your repository, yo can simply copy-paste the
+`.github-labelsrc.json` file into your new repository. After that, remove the ids of each
+label and synchronize them with GitHub:
+
 ```
-glm init
+github-labels sync
 ```
-3. Install label-manager on the repository where you want to implement these labels
-4. Copy the `.github-labelsrc.json` file of your repository with the required labels and paste it into your new repository
-5. Synchronize your duplicated `.github-labelsrc.json` file with GitHub:
-glm sync
-```
-Now you should see your labels in the new repository.

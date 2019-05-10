@@ -21,6 +21,13 @@
     "github-labels": "./bin/glm",
     "glm": "./bin/glm"
   },
+  "files": [
+    "bin",
+    "lib",
+    "pictures",
+    "LICENSE",
+    "readme.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/commercetools/github-labels.git"

@@ -71,6 +71,11 @@ const mockedCreateDeleteAndUpdateLabels = [
   labels.refactoring,
 ];
 
+const mockedUpdatedColorLabels = [
+  labels.bug,
+  { ...labels.feature, color: labels.bug.color },
+];
+
 const createMockForFetchLabels = ({
   statusCode = 200,
   apiResponse = mockedLabels,
@@ -277,6 +282,28 @@ describe('Config file', () => {
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         expect.any(String),
         JSON.stringify(mockedCreateDeleteAndUpdateLabels, null, 2)
+      );
+    });
+  });
+  describe('when update labels with same colors', () => {
+    beforeEach(() => {
+      createMockForFetchLabels();
+      createMockForUpdateLabels(labels.feature.name);
+      createMockForFetchLabels({
+        apiResponse: mockedUpdatedColorLabels,
+      });
+    });
+    it('should update one label', async () => {
+      fs.readFileSync.mockReturnValue(JSON.stringify(mockedUpdatedColorLabels));
+      const summary = await labelControl();
+      expect(summary.stats).toEqual({
+        created: 0,
+        deleted: 0,
+        updated: 1,
+      });
+      expect(fs.writeFileSync).toHaveBeenCalledWith(
+        expect.any(String),
+        JSON.stringify(mockedUpdatedColorLabels, null, 2)
       );
     });
   });

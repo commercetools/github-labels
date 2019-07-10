@@ -1,4 +1,4 @@
-# v1.0.3
+# v1.1.0
 
 ### Bug Fixes
 
@@ -6,7 +6,7 @@
 
 - fix: Make label color value required ([#17](https://github.com/commercetools/github-labels/pull/17))
 
-- fix: Set pagination for api requests ([#18](https://github.com/commercetools/github-labels/pull/18))
+- feat: Set pagination for api requests ([#18](https://github.com/commercetools/github-labels/pull/18))
 
 # v1.0.2
 

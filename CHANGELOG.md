@@ -1,3 +1,13 @@
+# v1.0.3
+
+### Bug Fixes
+
+- fix: Correct parsing of http git remote url ([#16](https://github.com/commercetools/github-labels/pull/16))
+
+- fix: Make label color value reqired ([#17](https://github.com/commercetools/github-labels/pull/17))
+
+- fix: Set pagination for api requests ([#18](https://github.com/commercetools/github-labels/pull/18))
+
 # v1.0.2
 
 ### Bug Fixes

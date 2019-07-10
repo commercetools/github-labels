@@ -70,7 +70,7 @@ If you want to see your changes, just go to your label settings on GitHub to see
 | :---------- | :------: | :---------------------------------------------------- |
 | id          |    no    | Id (Created by GitHub)                                |
 | name        |   yes    | String (Native emojis can be added)                   |
-| color       |    no    | String (hexadecimal color code without the leading #) |
+| color       |   yes    | String (hexadecimal color code without the leading #) |
 | description |    no    | String                                                |
 
 ### Reuse the same config across different repositories
